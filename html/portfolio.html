@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ribel — Portfolio</title>
+  <style>
+    /* Reset & base */
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --accent1:#7c3aed;
+      --accent2:#06b6d4;
+      --muted:#94a3b8;
+      --glass: rgba(255,255,255,0.04);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#e6eef8;background:linear-gradient(180deg,var(--bg),#021024);}
+
+    /* Layout */
+    .wrap{min-height:100vh;display:grid;grid-template-rows:1fr auto;align-items:center;padding:40px 20px;gap:28px}
+    .container{max-width:980px;margin:0 auto;width:100%;}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;align-items:center}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:16px;padding:28px;box-shadow:0 8px 30px rgba(2,6,23,0.6);backdrop-filter: blur(6px);}
+
+    h1{font-size:32px;margin:0 0 8px;letter-spacing:-0.5px}
+    p.lead{color:var(--muted);margin:0 0 16px}
+
+    /* Typing effect */
+    .typing{display:inline-block;border-right:2px solid rgba(230,238,248,0.14);padding-right:6px;animation:blink 1s steps(2, end) infinite}
+    @keyframes blink{50%{border-color:transparent}}
+
+    /* Profile card */
+    .profile{padding:20px;border-radius:14px;background:linear-gradient(135deg,var(--card), rgba(12,18,30,0.8));text-align:center}
+    .avatar{width:120px;height:120px;border-radius:50%;display:inline-grid;place-items:center;font-weight:700;font-size:40px;color:white;background:linear-gradient(135deg,var(--accent1),var(--accent2));box-shadow:0 6px 20px rgba(12,18,30,0.6)}
+    .meta{margin-top:14px}
+    .meta small{display:block;color:var(--muted)}
+
+    /* Quick info grid */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+    .info{background:var(--glass);padding:12px;border-radius:12px;text-align:center}
+    .info b{display:block;font-size:18px}
+    .info span{font-size:12px;color:var(--muted)}
+
+    /* Projects / About */
+    .section{margin-top:18px}
+    .projects{display:flex;flex-wrap:wrap;gap:12px}
+    .project{flex:1 1 calc(50% - 12px);min-width:220px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);transform:translateY(0);transition:transform .35s cubic-bezier(.2,.9,.3,1), box-shadow .35s}
+    .project:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(2,6,23,0.6)}
+    .project h3{margin:6px 0}
+    .project p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Animated gradient underline */
+    .fancy{display:inline-block;position:relative;padding-bottom:4px}
+    .fancy:after{content:'';position:absolute;left:0;right:0;height:4px;border-radius:6px;bottom:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));transform-origin:left;transform:scaleX(0);transition:transform .45s ease}
+    .fancy:hover:after{transform:scaleX(1)}
+
+    /* Floating blobs animation (decorative) */
+    .blobs{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .blob{position:absolute;filter:blur(60px);opacity:0.20;mix-blend-mode:screen}
+    .blob.b1{width:360px;height:360px;background:radial-gradient(circle at 30% 30%, #7c3aed, transparent 40%);left:-80px;top:-80px;animation:float1 8s ease-in-out infinite}
+    .blob.b2{width:280px;height:280px;background:radial-gradient(circle at 70% 70%, #06b6d4, transparent 40%);right:-60px;bottom:-60px;animation:float2 9s ease-in-out infinite}
+    @keyframes float1{0%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(12px) rotate(6deg)}100%{transform:translateY(0) rotate(0deg)}}
+    @keyframes float2{0%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-10px) rotate(-6deg)}100%{transform:translateY(0) rotate(0deg)}}
+
+    /* Footer */
+    footer{color:var(--muted);text-align:center;padding:18px 0;font-size:13px}
+
+    /* Responsive */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr;}
+      .grid{grid-template-columns:repeat(3,1fr)}
+      .project{flex-basis:100%}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="container">
+      <div class="hero">
+        <div class="card" id="mainCard">
+          <h1>Hello, I'm <span class="fancy">ribel</span></h1>
+          <p class="lead">BCA student • First year<br><span style="color:var(--muted);font-weight:600">ID:</span> <span style="font-weight:700">2510997436</span></p>
+
+          <p style="margin-top:8px">I build small websites, explore UI/UX, and learn new technologies. I like clean design and subtle animations.</p>
+
+          <div class="section">
+            <h3 class="fancy">About me</h3>
+            <div style="margin-top:8px;color:var(--muted);">
+              <p id="aboutText">I'm <strong>ribel</strong>, a first-year BCA student. I'm curious about web development and enjoy making interactive pages. This portfolio is a compact single-file example with CSS animations and a bit of JS.</p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3 class="fancy">Projects</h3>
+            <div class="projects">
+              <div class="project">
+                <h3>Personal Landing</h3>
+                <p>A responsive single-file site with animations (like this one).</p>
+              </div>
+              <div class="project">
+                <h3>Study Tracker</h3>
+                <p>A small JS app idea to track study sessions and goals.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <aside class="profile card">
+          <div class="avatar" id="avatar">R</div>
+          <div class="meta">
+            <div style="font-weight:700">ribel</div>
+            <small>BCA · First year</small>
+          </div>
+
+          <div class="grid" style="margin-top:16px">
+            <div class="info">
+              <b>2510997436</b>
+              <span>ID Number</span>
+            </div>
+            <div class="info">
+              <b>First Year</b>
+              <span>Class</span>
+            </div>
+            <div class="info">
+              <b>Student</b>
+              <span>Role</span>
+            </div>
+          </div>
+
+          <div style="margin-top:14px">
+            <button id="contactBtn" style="cursor:pointer;padding:8px 12px;border-radius:10px;border:0;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white;font-weight:600">Contact</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div class="container card" style="position:relative;overflow:visible;">
+      <h3 class="fancy">Skills & Timeline</h3>
+      <div style="display:flex;gap:12px;margin-top:12px;flex-wrap:wrap">
+        <div class="project" style="flex:1 1 180px">
+          <h3>HTML & CSS</h3>
+          <p>Comfortable building responsive layouts and animations.</p>
+        </div>
+        <div class="project" style="flex:1 1 180px">
+          <h3>JavaScript</h3>
+          <p>Interactive behaviour and small utilities.</p>
+        </div>
+        <div class="project" style="flex:1 1 180px">
+          <h3>Learning</h3>
+          <p>Working on backend basics and databases.</p>
+        </div>
+      </div>
+
+      <div class="section" style="margin-top:14px">
+        <h3 class="fancy">Fun animation</h3>
+        <p style="color:var(--muted);margin:8px 0">Scroll down to see a typing + reveal animation and hover the cards.</p>
+      </div>
+
+      <div style="height:12px"></div>
+      <footer>© <span id="year"></span> ribel — BCA Student</footer>
+
+      <div class="blobs" aria-hidden>
+        <div class="blob b1"></div>
+        <div class="blob b2"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Small JS enhancements: typing, reveal on scroll, contact button
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Typing effect for aboutText
+    const textEl = document.getElementById('aboutText');
+    const fullText = textEl.textContent.trim();
+    textEl.textContent = '';
+    let i = 0;
+    function typeTick(){
+      if(i <= fullText.length){
+        textEl.innerHTML = '<span class="typing">'+fullText.slice(0,i)+'</span>';
+        i++;
+        setTimeout(typeTick, 18 + Math.random()*30);
+      } else {
+        // remove typing border
+        textEl.innerHTML = fullText;
+      }
+    }
+    // start typing when visible
+    function onVisible(el, fn){
+      const obs = new IntersectionObserver(entries=>{
+        entries.forEach(entry=>{ if(entry.isIntersecting){ fn(); obs.disconnect(); } });
+      },{threshold:0.2});
+      obs.observe(el);
+    }
+    onVisible(textEl, typeTick);
+
+    // Reveal elements on scroll
+    const reveals = document.querySelectorAll('.project, .card, .profile');
+    const revObserver = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.style.transition = 'opacity .6s ease, transform .6s ease';
+          e.target.style.opacity = 1;
+          e.target.style.transform = 'translateY(0)';
+        } else {
+          e.target.style.opacity = 0; e.target.style.transform = 'translateY(18px)';
+        }
+      });
+    },{threshold:0.15});
+    reveals.forEach(r=>{
+      r.style.opacity = 0; r.style.transform = 'translateY(18px)'; revObserver.observe(r);
+    });
+
+    // Contact button (simple animated alert)
+    document.getElementById('contactBtn').addEventListener('click', ()=>{
+      const prev = document.getElementById('contactNote');
+      if(prev) prev.remove();
+      const note = document.createElement('div');
+      note.id = 'contactNote';
+      note.textContent = 'Email: 2510997436@student.example (example)';
+      note.style.cssText = 'margin-top:12px;padding:10px;border-radius:10px;background:linear-gradient(90deg, rgba(124,58,237,0.12), rgba(6,182,212,0.08));color:var(--muted);font-weight:600';
+      document.querySelector('.profile').appendChild(note);
+      setTimeout(()=>{ note.style.opacity = 0; setTimeout(()=>note.remove(),800); }, 4500);
+    });
+
+    // Small accessibility tweak: pressing "R" focuses avatar
+    window.addEventListener('keydown', (e)=>{ if(e.key.toLowerCase()==='r') document.getElementById('avatar').animate([{transform:'scale(1)'},{transform:'scale(1.08)'},{transform:'scale(1)'}],{duration:420}); });
+  </script>
+</body>
+</html>
